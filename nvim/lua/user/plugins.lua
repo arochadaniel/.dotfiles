@@ -149,10 +149,5 @@ return packer.startup(function(use)
 	use("petertriho/nvim-scrollbar")
 
 	-- Project handler
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({})
-		end,
-	})
+	use("ahmedkhalf/project.nvim")
 end)

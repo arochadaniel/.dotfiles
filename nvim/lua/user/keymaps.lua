@@ -49,9 +49,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<M-j>", ":m .+1<CR>==", opts)
-keymap("v", "<M-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
+keymap("n", "<M-j>", ":m .+1<CR>==", opts)
+keymap("n", "<M-k>", ":m .-2<CR>==", opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -85,3 +84,6 @@ keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 
 -- indent
 keymap("n", "<leader>ii", ":lua vim.lsp.buf.formatting()<CR>", opts)
+
+-- paste without losing the current buffer
+keymap("x", "<leader>p", '"_dP', opts)

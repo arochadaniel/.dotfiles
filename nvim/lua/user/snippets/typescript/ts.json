@@ -1,0 +1,73 @@
+{
+  "upper-case-constant": {
+    "prefix": "ucc",
+    "description": "Snippet to create a constant in upper case based on the filename",
+    "body": "export const ${TM_FILENAME_BASE/([^-]+)(-*)/${1:/upcase}${2:+_}/g} = '${1:value}'"
+  },
+  "camel-case-constant": {
+    "prefix": "ccc",
+    "description": "Snippet to create a constant in upper case based on the filename",
+    "body": "export const ${TM_FILENAME_BASE/(?:.+^|-)([a-z])/${1:/upcase}/g} = '${1:value}'"
+  },
+  "export from file": {
+    "prefix": "eff",
+    "body": "export * from '${1:./}'"
+  },
+  "styled-functional-component-with-props-and-named-export": {
+    "prefix": "sfc",
+    "description": "Snippet to create functional component with FC type with Props",
+    "body": [
+      "import { FC } from 'react'",
+      "",
+      "interface Props {$1}",
+      "",
+      "export const ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g}: FC<Props> = (${2:props}) => {",
+      "  return (",
+      "    <div>$3</div>",
+      "  )",
+      "}",
+      ""
+    ]
+  },
+  "file-arrow-function": {
+    "prefix": "faf",
+    "description": "Defines an arrow function based on the name of the file",
+    "body": "export const ${TM_FILENAME_BASE/(?:.+^|-)([a-z])/${1:/upcase}/g} = ($1) => {$0}"
+  },
+  "async-file-arrow-function": {
+    "prefix": "afaf",
+    "description": "Defines an async arrow function based on the name of the file",
+    "body": "export const ${TM_FILENAME_BASE/(?:.+^|-)([a-z])/${1:/upcase}/g} = async ($1) => {$0}"
+  },
+  "create-interface": {
+    "prefix": "ci",
+    "description": "Defines an interface based on the name of the file",
+    "body": "export interface ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g} {$0}"
+  },
+  "create-type": {
+    "prefix": "ct",
+    "description": "Defines a type based on the name of the file",
+    "body": "export type ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g} = {$0}"
+  },
+  "create-next-page": {
+    "prefix": "cnp",
+    "description": "Snippet for creating next page component",
+    "body": [
+      "import { NextPage } from 'next';",
+      "",
+      "const ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g}: NextPage = () => {",
+      "  return $0",
+      "};",
+      "",
+      "export default ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g}"
+    ]
+  },
+  "class-named-export": {
+    "prefix": "cne",
+    "description": "Snippet for creating class based on filename",
+    "body": [
+      "export class ${TM_FILENAME_BASE/(?:^|-)([a-z])|/${1:/upcase}/g} {$0}",
+      ""
+    ]
+  }
+}

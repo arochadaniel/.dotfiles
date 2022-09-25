@@ -1,4 +1,8 @@
-require("telescope").setup({})
+require("telescope").setup({
+	defaults = {
+		file_ignore_patterns = { "^node_modules/", "^dist/", "^.git/", "^.alacritty-colorscheme/" },
+	},
+})
 
 require("project_nvim").setup({
 	-- Manual mode doesn't automatically change your root directory, so you have

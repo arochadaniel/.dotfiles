@@ -7,3 +7,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.endofline = true
+vim.opt.autowriteall = true
+
+-- vim.cmd([[
+-- autocmd BufLeave * if &buftype != 'nofile' | <buffer> silent write | endif
+-- ]])

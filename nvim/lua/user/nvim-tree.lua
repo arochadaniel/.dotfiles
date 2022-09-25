@@ -8,32 +8,39 @@ if not config_status_ok then
 	return
 end
 
+require("nvim-tree.events").on_file_created(function(file)
+	vim.cmd("edit " .. vim.fn.fnamemodify(file.fname, ":p"))
+end)
+
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
+	open_on_setup = true,
 	sync_root_with_cwd = true,
 	respect_buf_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_root = true,
+	filters = {
+		custom = { ".git" },
 	},
 	renderer = {
+		indent_markers = {
+			enable = true,
+		},
 		root_folder_modifier = ":t",
+		highlight_git = true,
+		highlight_opened_files = "name",
 		icons = {
 			glyphs = {
 				default = "",
 				symlink = "",
 				git = {
-					unstaged = "",
+					unstaged = "~",
 					staged = "S",
 					unmerged = "",
 					renamed = "➜",
 					deleted = "",
 					untracked = "U",
-					ignored = "◌",
 				},
 				folder = {
 					default = "",
@@ -52,6 +59,7 @@ nvim_tree.setup({
 	},
 	hijack_directories = {
 		enable = true,
+		auto_open = true,
 	},
 	ignore_ft_on_setup = {
 		"startify",
@@ -78,7 +86,7 @@ nvim_tree.setup({
 	view = {
 		width = 40,
 		height = 40,
-		hide_root_folder = false,
+		hide_root_folder = true,
 		side = "right",
 		mappings = {
 			custom_only = false,
@@ -88,7 +96,7 @@ nvim_tree.setup({
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
 		},
-		number = false,
-		relativenumber = false,
+		number = true,
+		relativenumber = true,
 	},
 })

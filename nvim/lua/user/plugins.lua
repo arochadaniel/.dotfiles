@@ -34,13 +34,6 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Package manager
 
 	use({
-		"declancm/cinnamon.nvim",
-		config = function()
-			require("cinnamon").setup()
-		end,
-	})
-
-	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
@@ -65,11 +58,11 @@ return packer.startup(function(use)
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("glepnir/lspsaga.nvim")
 
 	-- Necessary for Live Grep in telescope (<leader>fg)
 	use("BurntSushi/ripgrep")
@@ -133,15 +126,6 @@ return packer.startup(function(use)
 	-- Better buffer closing
 	use("moll/vim-bbye")
 
-	-- Term floater
-	use({
-		"akinsho/toggleterm.nvim",
-		tag = "*",
-		config = function()
-			require("toggleterm").setup()
-		end,
-	})
-
 	-- Git handler
 	use("tpope/vim-fugitive")
 
@@ -150,4 +134,7 @@ return packer.startup(function(use)
 
 	-- Project handler
 	use("ahmedkhalf/project.nvim")
+
+	-- Sqlite
+	use({ "kkharji/sqlite.lua" })
 end)

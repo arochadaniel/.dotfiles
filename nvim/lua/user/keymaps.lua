@@ -70,20 +70,21 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files hidden=true<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fl", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope git_files<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
 -- Bufferline
 keymap("n", "<leader>cb", ":Bdelete<CR>", opts)
-
--- ToggleTerm
-keymap("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 
 -- indent
 keymap("n", "<leader>ii", ":lua vim.lsp.buf.formatting()<CR>", opts)
 
 -- paste without losing the current buffer
 keymap("x", "<leader>p", '"_dP', opts)
+
+-- Reload NeoVim config
+keymap("n", "<leader>rn", ":luafile %<CR>", opts)
